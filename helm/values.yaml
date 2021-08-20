@@ -9,8 +9,8 @@ image:
   pullPolicy: Always
 
 imagePullSecrets: []
-nameOverride: "cherry-awesome-app"
-fullnameOverride: "cherry-chart"
+nameOverride: "cherry-awesome-app2"
+fullnameOverride: "cherry-chart2"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -32,8 +32,8 @@ securityContext: {}
 
 service:
   type: NodePort
-  port: 80
-  nodePort: 9001
+  port: 82
+  nodePort: 9002
 
 ingress:
   enabled: false
