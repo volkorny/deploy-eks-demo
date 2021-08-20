@@ -9,7 +9,7 @@ env:
   CLUSTER_NAME: demo1
 
 jobs:
-  check-bats-version:
+  deploy-to-eks:
     runs-on: ubuntu-latest
     steps:
 
@@ -23,7 +23,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - run: aws eks update-kubeconfig \
-          --region ${AWS_REGION} \
+      - name:  Login to cluster
+        run: >
+          aws eks update-kubeconfig
+          --region ${AWS_REGION}
           --name ${CLUSTER_NAME}
-      - run: kubectl get nodes
+
+      - name:  Test cluster access
+        run: kubectl get nodes
