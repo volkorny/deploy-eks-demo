@@ -32,3 +32,12 @@ jobs:
 
       - name: Deploy Demo Helm Chart
         run: helm install my-demo-chart helm/ --values helm/values.yaml
+
+      - name: Get Deployments
+        run: kubectl get deployments
+
+      - name: Get Services
+        run: kubectl get services
+
+      - name: Get Pods
+        run: kubectl get pods
