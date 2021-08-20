@@ -1,0 +1,19 @@
+name: deploy to EKS
+on: [push]
+
+env:
+
+  AWS_REGION: eu-central-1
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  CLUSTER_NAME: demo1
+
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: aws eks \
+          --region ${AWS_REGION} \
+          update-kubeconfig --name ${CLUSTER_NAME}
+      - run: kubectl get nodes
