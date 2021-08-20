@@ -31,7 +31,7 @@ jobs:
         run: kubectl get nodes
 
       - name: Deploy Demo Helm Chart
-        run: helm install my-demo-chart helm/ --values helm/values.yaml
+        run: helm upgrade my-demo-chart helm/ --values helm/values.yaml
 
       - name: Get Deployments
         run: kubectl get deployments
