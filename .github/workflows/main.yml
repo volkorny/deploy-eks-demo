@@ -27,5 +27,8 @@ jobs:
           --region ${AWS_REGION}
           --name ${CLUSTER_NAME}
 
-      - name:  Test cluster access
+      - name: Test cluster access
         run: kubectl get nodes
+
+      - name: Deploy Demo Helm Chart
+        run: helm install my-demo-chart helm/ --values helm/values.yaml
